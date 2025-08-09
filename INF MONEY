@@ -1,0 +1,45 @@
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "CONTROLL",
+   Icon = 0,
+   LoadingTitle = "ngl twin ts still being made",
+   LoadingSubtitle = "by controll",
+   ShowText = "Rayfield",
+   Theme = "DarkBlue",
+   ToggleUIKeybind = "K",
+   ConfigurationSaving = {
+      Enabled = true,
+      FileName = "Big Hub"
+   },
+})
+
+local HomeTab = Window:CreateTab("Home", nil)
+local HomeSection = HomeTab:CreateSection("Main")
+
+HomeTab:CreateButton({
+    Name = "INF MONEYYYY MAX MONEY IS 300k (u can have 1 mil in ur bank)",
+    Callback = function()
+        for i = 1, 5000 do
+            fireproximityprompt(workspace.JobSystem["Dirty Cash"].CleaningSpot.ProximityPrompt)
+        end
+    end
+})
+
+local atmEnabled = false
+
+HomeTab:CreateToggle({
+    Name = "Toggle ATM",
+    CurrentValue = false,
+    Callback = function(Value)
+        atmEnabled = Value
+        local player = game:GetService("Players").LocalPlayer
+        local atmGui = player.PlayerGui:WaitForChild("ATM")
+
+        if atmGui:IsA("ScreenGui") then
+            atmGui.Enabled = atmEnabled
+        elseif atmGui:IsA("GuiObject") then
+            atmGui.Visible = atmEnabled
+        end
+    end,
+})
